@@ -21,14 +21,14 @@
     <main class="">
         @include('components.navbar')
     </main>
-
+    
     <div>
-                <form method='POST' action= "{{route('inicia-sesion')}}">
+        <form method='POST' action= "{{route('inicia-sesion')}}">
             @csrf
-
+            
             <div class="mb-3">
                 <label for="name" class="form-label">Usuario</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Ingresa tu nombre de usuario">
+                <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
             </div>
            
             <div class="mb-3">
@@ -42,6 +42,13 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+
+            @if($errors->has('login_error'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('login_error') }}
+                </div>
+            @endif
+
         </form>
     </div>
 
