@@ -24,27 +24,35 @@
         @include('components.navbar')
     </main>
 
-    <div>
-        <form method='POST' action= "{{route('validar-registro')}}">
-        @csrf
-            <div class="mb-3">
-            <label for="name" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Ingresa tu nombre de usuario">
-        </div>
+    <div  style = "background-color: #181A21;">
+        <div style = "background-color: #181A21;">
+            <div style = "background-color: #181A21;">
+                <br>
+                <form method='POST' action= "{{route('validar-registro')}}">
+                    @csrf
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label" style="color: #1999ff;" font>Crea tu nombre de usuario</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">Nunca compartiremos tu correo con nadie más.</div>
-        </div>
-        
-        <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="password" class="form-label" style ="color: #AFAFAF">CONTRASEÑA</label>
+                        <input type="password" class="form-control" id="password" name='password'>
+                    </div>
+                    
+                    <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 50px;" >
+                        <button type="submit" style = "background:linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);" class="btn btn-primary">Crear cuenta</button>
+                    </div>
 
-        <button type="submit" class="btn btn-primary">Registrar</button>
-        </form>
-    </div>
+                </form>
+            </div>
+        </div>
+    </div>    
 </body>
 </html>

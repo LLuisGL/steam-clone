@@ -11,7 +11,8 @@
 
     <style>
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: "Motiva Sans", Sans-serif;
+            font-size: 12px;
         }
     </style>
 
@@ -21,36 +22,45 @@
     <main class="">
         @include('components.navbar')
     </main>
-    
-    <div>
-        <form method='POST' action= "{{route('inicia-sesion')}}">
-            @csrf
-            
-            <div class="mb-3">
-                <label for="name" class="form-label">Usuario</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+    <div  style = "background-color: #181A21;">
+        <div style = "background-color: #181A21;">
+            <div style = "background-color: #181A21;">
+                <br>
+                <form method='POST' action= "{{route('inicia-sesion')}}">
+                    @csrf
+                    
+                    <div class="mb-3">
+                        <label for="name" class="form-label" style="color: #1999ff;" font>INICIA SESION CON TU NOMBRE DE CUENTA</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="password" class="form-label" style ="color: #AFAFAF">CONTRASEÑA</label>
+                        <input type="password" class="form-control" id="password" name='password'>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" style ="color: #AFAFAF" for="exampleCheck1">Recordarme</label>
+                    </div>
+                    
+                    <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 50px;" >
+                        <button type="submit" style = "background:linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);" class="btn btn-primary">Iniciar sesion</button>
+                    </div>
+
+                    <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 20px;">
+                        @if($errors->has('login_error'))
+                            <label class="form-error-label" style = "color: #C15755">{{ $errors->first('login_error') }}</label>
+                        @endif
+                    </div>
+
+                    <a href="/registro" style="background-color: #181A21; color: #AFAFAF;  
+                    display: flex; justify-content: center; align-items: center; height: 20px;" >No tienes cuenta todavia?</a>
+
+
+                </form>
             </div>
-           
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name='password'>
-            </div>
-
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-            @if($errors->has('login_error'))
-                <div class="alert alert-danger">
-                    {{ $errors->first('login_error') }}
-                </div>
-            @endif
-
-        </form>
-    </div>
-
+        </div>
+    </div>    
 </body>
 </html>
