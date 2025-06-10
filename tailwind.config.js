@@ -6,7 +6,11 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        motiva:['"Motiva Sans"', 'sans-serif'],
+      }
+    },
   },
   plugins: [],
 }

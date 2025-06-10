@@ -21,5 +21,7 @@
     <main class="">
         @include('components.navbar')
     </main>
+        
+    <h1 class = "text-3xl">Hola</h1>
 </body>
 </html>
