@@ -19,48 +19,60 @@
     <title> Inicio de sesion </title>
 </head>
 <body class='antialiased' background-color= 'lightblue';>
-    <main class="">
+    
+    <header class="">
         @include('components.navbar')
-    </main>
-    <div  style = "background-color: #181A21;">
-        <div style = "background-color: #181A21;">
-            <div style = "background-color: #181A21;">
-                <br>
-                <form method='POST' action= "{{route('inicia-sesion')}}">
-                    @csrf
-                    
-                    <div class="mb-3">
-                        <label for="name" class="form-label" style="color: #1999ff;" font>INICIA SESION CON TU NOMBRE DE CUENTA</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+    </header>
+
+    <main class ="w-screen h-screen">
+        <div  class = "bg-[#011e3b] w-full h-full  items-center">
+
+            <div class ='pt-[80px] pb-[150px] items-center flex flex-col'>
+
+                <div class='flex flex-col gap-2 my-2 mx-4'>
+                    <div class= 'text-[#FFFFFF] font-motiva text-3xl font-extrabold'>
+                    Inicio de sesion
                     </div>
+                </div>
                 
-                    <div class="mb-3">
-                        <label for="password" class="form-label" style ="color: #AFAFAF">CONTRASEÑA</label>
-                        <input type="password" class="form-control" id="password" name='password'>
-                    </div>
-
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" style ="color: #AFAFAF" for="exampleCheck1">Recordarme</label>
-                    </div>
+                <div class = "bg-[#181A21] rounded-[4px] p-[24px_32px] flex-1 min-w-[636px]">
+                    <form method='POST' action= "{{route('inicia-sesion')}}">
+                        @csrf
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label text-[#1999ff] font-motiva font-medium">INICIA SESION CON TU NOMBRE DE CUENTA</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+                        </div>
                     
-                    <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 50px;" >
-                        <button type="submit" style = "background:linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);" class="btn btn-primary">Iniciar sesion</button>
-                    </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label" style ="color: #AFAFAF">CONTRASEÑA</label>
+                            <input type="password" class="form-control" id="password" name='password'>
+                        </div>
 
-                    <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 20px;">
-                        @if($errors->has('login_error'))
-                            <label class="form-error-label" style = "color: #C15755">{{ $errors->first('login_error') }}</label>
-                        @endif
-                    </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" style ="color: #AFAFAF" for="exampleCheck1">Recordarme</label>
+                        </div>
+                        
+                        <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 50px;" >
+                            <button type="submit" style = "background:linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);" class="btn btn-primary">Iniciar sesion</button>
+                        </div>
 
-                    <a href="/registro" style="background-color: #181A21; color: #AFAFAF;  
-                    display: flex; justify-content: center; align-items: center; height: 20px;" >No tienes cuenta todavia?</a>
+                        <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 20px;">
+                            @if($errors->has('login_error'))
+                                <label class="form-error-label" style = "color: #C15755">{{ $errors->first('login_error') }}</label>
+                            @endif
+                        </div>
+
+                        <a href="/registro" style="background-color: #181A21; color: #AFAFAF;  
+                        display: flex; justify-content: center; align-items: center; height: 20px;" >No tienes cuenta todavia?</a>
 
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>    
+    </main>  
+
 </body>
 </html>

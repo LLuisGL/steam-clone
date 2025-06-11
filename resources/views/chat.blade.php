@@ -25,6 +25,7 @@
             </div>
         </div>
 
+        
         <div class= "bg-blue-200">
             seguimos en desarrollo
         </div>
