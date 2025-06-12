@@ -25,47 +25,54 @@
     </header>
 
     <main class ="w-screen h-screen">
-        <div  class = "bg-[#011e3b] w-full h-full  items-center">
+        <div  class = "bg-[url('/img/steamFondo.jpeg')] bg-no-repeat bg-cover w-full h-full  items-center">
 
             <div class ='pt-[80px] pb-[150px] items-center flex flex-col'>
 
-                <div class='flex flex-col gap-2 my-2 mx-4'>
+                <div class='flex flex-col gap-2 my-2 mx-4 pr-[320px] pb-[20px]'>
                     <div class= 'text-[#FFFFFF] font-motiva text-3xl font-extrabold'>
                     Inicio de sesion
                     </div>
                 </div>
-                
+
                 <div class = "bg-[#181A21] rounded-[4px] p-[24px_32px] flex-1 min-w-[636px]">
                     <form method='POST' action= "{{route('inicia-sesion')}}">
                         @csrf
                         
-                        <div class="mb-3">
-                            <label for="name" class="form-label text-[#1999ff] font-motiva font-medium">INICIA SESION CON TU NOMBRE DE CUENTA</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
+                        <div class = "flex flex-col" >
+                            <label for="name" class="form-label text-[#1999ff] font-motiva font-medium ">INICIA SESION CON TU NOMBRE DE CUENTA</label>
+                            <input 
+                                type="text" 
+                                class="bg-[#393c44] border border-[#393c44] hover:brightness-125 text-white px-3 py-2 rounded outline-none focus:bg-[#393c44] focus:border-[#393c44] focus:brightness-125 transition duration-200"
+                                id="name" name="name" value="{{old('name')}}"
+                                />
                         </div>
                     
-                        <div class="mb-3">
+                        <div class= "flex flex-col pt-[10px]">
                             <label for="password" class="form-label" style ="color: #AFAFAF">CONTRASEÑA</label>
-                            <input type="password" class="form-control" id="password" name='password'>
+                            <input 
+                                type="password" 
+                                class="bg-[#393c44] border border-[#393c44] hover:brightness-125 text-white px-3 py-2 rounded outline-none focus:bg-[#393c44] focus:border-[#393c44] focus:brightness-125 transition duration-200"
+                                id="password" name='password'
+                            />
                         </div>
 
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <div class="flex flex-row  pt-[10px]">
+                            <input type="checkbox" class="form-check-input bg-[#393c44] " id="exampleCheck1">
                             <label class="form-check-label" style ="color: #AFAFAF" for="exampleCheck1">Recordarme</label>
                         </div>
                         
-                        <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 50px;" >
-                            <button type="submit" style = "background:linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);" class="btn btn-primary">Iniciar sesion</button>
+                        <div class="bg-[#181A21] flex justify-center items-center h-[50px]" >
+                            <button type="submit"  class="bg-gradient-to-r from-[#06BFFF] to-[#2D73FF] text-white font-semibold  w-[270px] h-[40px]">Iniciar sesion</button>
                         </div>
 
-                        <div style = "background-color: #181A21;  display: flex; justify-content: center; align-items: center; height: 20px;">
+                        <div class="bg-[#181A21] flex justify-center items-center h-[50px]">
                             @if($errors->has('login_error'))
-                                <label class="form-error-label" style = "color: #C15755">{{ $errors->first('login_error') }}</label>
+                                <label class="form-error-label text-[#C15755]">{{ $errors->first('login_error') }}</label>
                             @endif
                         </div>
 
-                        <a href="/registro" style="background-color: #181A21; color: #AFAFAF;  
-                        display: flex; justify-content: center; align-items: center; height: 20px;" >No tienes cuenta todavia?</a>
+                        <a href="/registro" class="bg-[#181A2] text-[#AFAFAF] flex justify-center items-center h-[20px] hover:text-white" >No tienes cuenta todavia?</a>
 
 
                     </form>
