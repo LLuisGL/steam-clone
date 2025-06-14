@@ -31,7 +31,7 @@
 
                 <div class='flex flex-col gap-2 my-2 mx-4 pr-[320px] pb-[20px]'>
                     <div class= 'text-[#FFFFFF] font-motiva text-3xl font-extrabold'>
-                    Inicio de sesion
+                    Inicio de sesión
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                         @csrf
                         
                         <div class = "flex flex-col" >
-                            <label for="name" class="form-label text-[#1999ff] font-motiva font-medium ">INICIA SESION CON TU NOMBRE DE CUENTA</label>
+                            <label for="name" class="form-label text-[#1999ff] font-motiva font-medium ">INICIA SESIÓN CON TU NOMBRE DE CUENTA</label>
                             <input 
                                 type="text" 
                                 class="bg-[#393c44] border border-[#393c44] hover:brightness-125 text-white px-3 py-2 rounded outline-none focus:bg-[#393c44] focus:border-[#393c44] focus:brightness-125 transition duration-200"
@@ -59,7 +59,7 @@
 
                         <div class="flex flex-row  pt-[10px]">
                             <input type="checkbox" class="form-check-input bg-[#393c44] " id="exampleCheck1">
-                            <label class="form-check-label" style ="color: #AFAFAF" for="exampleCheck1">Recordarme</label>
+                            <label class="form-check-label pl-[5px] text-[#AFAFAF]" for="exampleCheck1">Recordarme</label>
                         </div>
                         
                         <div class="bg-[#181A21] flex justify-center items-center h-[50px]" >
@@ -72,14 +72,20 @@
                             @endif
                         </div>
 
-                        <a href="/registro" class="bg-[#181A2] text-[#AFAFAF] flex justify-center items-center h-[20px] hover:text-white" >No tienes cuenta todavia?</a>
+                        <a href="/registro" class="bg-[#181A2] text-[#AFAFAF] flex justify-center items-center h-[20px] underline hover:text-white" >No tienes cuenta todavia?</a>
 
 
                     </form>
                 </div>
             </div>
         </div>
-    </main>  
+    </main> 
+    
+    <footer>
+        <div class= 'bg-[#181A21] text-[#AFAFAF] h-[290px]'>
+            este es el pie de pagina
+        </div>
+    </footer>
 
 </body>
 </html>

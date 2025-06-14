@@ -44,7 +44,7 @@ class LoginController extends Controller
             return redirect()->intended(route('home'));
         }
         return back()->withErrors([
-            'login_error' => 'El nombre de usuario no existe',
+            'login_error' => 'Las credenciales estan incorrectas',
         ])->withInput();
     }
 
