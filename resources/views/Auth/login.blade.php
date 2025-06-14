@@ -11,8 +11,8 @@
 
     <style>
         body {
-            font-family: "Motiva Sans", Sans-serif;
-            font-size: 12px;
+            font-family: "Opens Sans", Sans-serif;
+
         }
     </style>
 
@@ -20,7 +20,7 @@
 </head>
 <body class='antialiased' background-color= 'lightblue';>
     
-    <header class="">
+    <header>
         @include('components.navbar')
     </header>
 
