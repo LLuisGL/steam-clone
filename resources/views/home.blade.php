@@ -14,8 +14,8 @@
             font-family: 'Open Sans', sans-serif;
         }
     </style>
-    
-    <title>Apple</title>
+    <link rel="shortcut icon" href="./img/steam_icon.png" />
+    <title>Bienvenido a Steam</title>
 </head>
 <body class='antialiased bg-[#1a293a]'>
     @include('components.navbar')
@@ -35,6 +35,46 @@
             </div>
         </div>
     </header>
-    
+    <div class="grid grid-cols-4">
+        <div>
+            <p>hola</p>
+        </div>
+        <div class="col-span-2">
+            <div class="mt-4">
+                <p class="uppercase text-white text-sm">Destacados y recomendados</p>
+                <div class="h-[350px] flex">
+                    <div class="w-2/3 h-full bg-red-100 drop-shadow-2xl">
+                        imagen juego
+                    </div>
+                    <div class="flex flex-col justify-center w-1/3 h-full bg-red-200 pr-2 ">
+                        <p class="ml-4">TItulo</p>
+                        <div class="grid grid-cols-2 h-1/2 gap-2">
+                            <div class="bg-red-100">
+                                imagen 1
+                            </div>
+                            <div class="bg-red-200">
+                                imagen 2
+                            </div>
+                            <div class="bg-red-300">
+                                imagen 3
+                            </div>
+                            <div class="bg-red-400">
+                                imagen 4
+                            </div>
+                        </div>
+                        <p>Ya disponible</p>
+                        <div class="flex ml-4 justify-between">
+                            <p class="text-xs">precio</p>
+                            <p >icono</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+
+    </div>
 </body>
 </html>
