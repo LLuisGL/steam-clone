@@ -35,11 +35,49 @@
             </div>
         </div>
     </header>
-    <div class="grid grid-cols-4">
+    <div class="grid grid-cols-8">
+        <div></div>
         <div>
-            <p>hola</p>
+            <div class="bg-blue-100 h-10xl flex flex-col gap-8 mt-10">
+                <div class="flex flex-col">
+                    <img src="" alt="">
+                    <p>Tarjeta de regalo de steam</p>
+                    
+                </div>
+                <div class="flex flex-col">
+                    <p>Recomendados</p>
+                    <a href="">Amigods</a>
+                    <a href="">Mentores</a>
+                    <a href="">Etiquetas</a>
+                </div>
+                <div class="flex flex-col">
+                    <p>Explorar categorias</p>
+                    <a href="">Lo más vendido</a>
+                    <a href="">Novedades</a>
+                    <a href="">Próximamente</a>
+                    <a href="">Promociones</a>
+                    <a href="">Títulos de RV</a>
+                    <a href="">Compatibles con controles</a>
+                    <a href="">Perfecto para Deck</a>
+                </div>
+                <div class="flex flex-col">
+                    <p>Explorar por genero</p>
+                    <a href="">Free to Play</a>
+                    <a href="">Acceso anticipado</a>
+                    <a href="">Acción</a>
+                    <a href="">Aventura</a>
+                    <a href="">Carreras</a>
+                    <a href="">Casuales</a>
+                    <a href="">Deportes</a>
+                    <a href="">Estrategia</a>
+                    <a href="">Indie</a>
+                    <a href="">Multijugador masivo</a>
+                    <a href="">Rol</a>
+                    <a href="">Simuladores</a>
+                </div>
+            </div>
         </div>
-        <div class="col-span-2">
+        <div class="col-span-4">
             <div class="mt-4">
                 <p class="uppercase text-white text-sm">Destacados y recomendados</p>
                 <div class="h-[350px] flex">
@@ -66,6 +104,27 @@
                         <div class="flex ml-4 justify-between">
                             <p class="text-xs">precio</p>
                             <p >icono</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 mb-8 bg-green-100 w-full h-48">
+
+            </div>
+            <div class="h-96 mb-8">
+                <div class="h-full grid grid-cols-3 gap-2">
+                    <div class="bg-red-100">
+
+                    </div>
+                    <div class="bg-blue-100">
+
+                    </div>
+                    <div class="grid grid-rows-2 gap-2">
+                        <div class="bg-red-100">
+
+                        </div>
+                        <div class="bg-blue-100">
+
                         </div>
                     </div>
                 </div>
