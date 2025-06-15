@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $table = 'usuario';
+
+    public function juegos()
+    {
+        return $this->belongsToMany(Juego::class, 'juegos_por_usuario', 'id_usuario', 'id_juego')
+                    ->withPivot('favorito');
+    }
 }
