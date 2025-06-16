@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +19,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/login', function () {
-    return view('Auth/login');
-})->name('login');
-
-Route::get('/registro', function() {
-    return view('Auth/register');
-});
-
 Route::get('/chat', function() {
     return view('chat');
 });
 
-Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
+Route::get('/login',[LoginController::class, 'show'])->name('login');
+Route::get('/registro',[RegisterController::class,'show']);
+Route::post('/validar-registro',[RegisterController::class,'register'])->name('validar-registro');
 Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
-Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
