@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Juegos;
 
 class JuegosController extends Controller
 {
     public function index(){
+        //HEADER
         $juego = DB::table('juegos as j')
         ->select('j.nombre_juego','j.precio_normal', 'j.precio_oferta', 'j.id')
         ->get();
@@ -27,6 +29,18 @@ class JuegosController extends Controller
         ->select('i.url')
         ->get();
 
-        return view('home',['informacion'=>$juego, 'img_principal'=>$imagen_principal,'imgs_secundarias'=>$imagenes_secundarias, 'plataformas'=>$plataformas]);
+        //JUEGOS
+
+        $juegos = Juegos::with([
+            'plataformas',
+            'tags',
+            'imagenes' => function ($query) {
+                $query->where('tag', 'priority');
+            }
+        ])->get();
+
+
+
+        return view('home',['informacion'=>$juego, 'img_principal'=>$imagen_principal,'imgs_secundarias'=>$imagenes_secundarias, 'plataformas'=>$plataformas, 'juegos'=>$juegos]);
     }
 }

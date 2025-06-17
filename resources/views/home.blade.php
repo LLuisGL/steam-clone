@@ -35,7 +35,7 @@
             </div>
         </div>
     </header>
-    <div class="grid grid-cols-8">
+    <div class="h-full grid grid-cols-8">
         <div></div>
         <div>
             <div class="h-10xl flex flex-col gap-8 mt-10">
@@ -142,9 +142,40 @@
                 </div>
             </div>
             -->
-            <div class="h-32 bg-red-100 grid grid-cols-8">
-                <div class="col-span-5">
-                    hola
+            <div class="grid grid-cols-8 mb-4">
+                <div class="col-span-5 grid grid-cols-8 bg-red-100">
+                    @foreach($juegos as $juego)
+                        <div class="col-span-3 h-full ">
+                            <img src="/img/{{$juego->id}}/{{$juego->imagenes->first()->url}}" alt="{{$juego->imagenes->first()->url}}" class="w-full h-24 object-cover">
+                        </div>
+                        <div class="col-span-5 grid grid-cols-5 h-full">
+                            @php
+                                $precio_oferta = $juego->precio_oferta > 0;
+                            @endphp
+
+                            <div class="col-span-{{ $precio_oferta ? 3 : 4 }}">
+                                <p>{{$juego->nombre_juego}}</p>
+                                <div class="flex flex-row gap-2">
+                                    @foreach($plataformas as $plataforma)
+                                        <img src="/img/platforms/{{$plataforma->url_imagen}}" alt="{{$plataforma->url_imagen}}">
+                                    @endforeach
+                                </div>
+                                <p>Tags</p>
+                            </div>
+                            @if($juego->precio_oferta > 0)
+                                <div class="flex h-full items-center justify-center ">
+                                    <p class="text-white bg-green-300 text-center px-2">-10%</p>
+                                </div>
+                            @endif
+                            <div>
+                                @if($juego->precio_oferta > 0)
+                                    <p>precio_oferta</p>
+                                @endif
+                                <p>precio_normal</p>
+                                <p>fecha</p>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="col-span-3">
                     hola
@@ -152,6 +183,7 @@
             </div>
         </div>
     </div>
+    @include('components.footer')
     <script src="{{ asset('js/home.js') }}"></script>
 </body>
 </html>

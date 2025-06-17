@@ -46,7 +46,7 @@ class User extends Authenticatable
     // aplicamos un mutator
 
     public function juegos(){
-        return $this->belongsToMany(Juego::class, 'juegos_por_usuario', 'id_usuario', 'id_juego')
+        return $this->belongsToMany(Juego::class, 'juegos__por__usuarios', 'id_usuario', 'id_juego')
                     ->withPivot('favorito');
     }
 

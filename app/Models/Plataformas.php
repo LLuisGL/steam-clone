@@ -13,6 +13,6 @@ class Plataformas extends Model
 
     public function juegos()
     {
-        return $this->belongsToMany(Juego::class, 'plataformas_por_juego', 'id_plataforma', 'id_juego');
+        return $this->belongsToMany(Juego::class, 'plataformas__por__juegos', 'id_plataforma', 'id_juego');
     }
 }
