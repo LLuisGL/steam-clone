@@ -40,11 +40,11 @@
                             @csrf
                             
                             <div class = "flex flex-col" >
-                                <label for="name" class="form-label text-[#1999ff] font-motiva font-medium ">INICIA SESIÓN CON TU NOMBRE DE CUENTA</label>
+                                <label for="username" class="form-label text-[#1999ff] font-motiva font-medium ">INICIA SESIÓN CON TU NOMBRE DE CUENTA</label>
                                 <input 
                                     type="text" 
                                     class="bg-[#393c44] border border-[#393c44] hover:brightness-125 text-white px-3 py-2 rounded outline-none focus:bg-[#393c44] focus:border-[#393c44] focus:brightness-125 transition duration-200"
-                                    id="name" name="name" value="{{old('name')}}"
+                                    id="username" name="username" value="{{old('username')}}"
                                     />
                             </div>
                         
@@ -67,9 +67,11 @@
                             </div>
 
                             <div class="bg-[#181A21] flex justify-center items-center h-[50px]">
+
                                 @if($errors->has('login_error'))
                                     <label class="form-error-label text-[#C15755]">{{ $errors->first('login_error') }}</label>
                                 @endif
+                                
                             </div>
 
                             <a href="#" class="bg-[#181A2] text-[#AFAFAF] flex justify-center items-center h-[20px] underline hover:text-white" >Ayuda, no puedo iniciar sesion</a>
