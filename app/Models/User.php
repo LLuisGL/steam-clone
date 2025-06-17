@@ -42,11 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $table = 'usuario';
+    // aplicamos un mutator
 
-    public function juegos()
-    {
+    public function juegos(){
         return $this->belongsToMany(Juego::class, 'juegos_por_usuario', 'id_usuario', 'id_juego')
                     ->withPivot('favorito');
+    }
+
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
     }
 }
