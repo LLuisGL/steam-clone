@@ -45,6 +45,11 @@ class User extends Authenticatable
 
     // aplicamos un mutator
 
+    public function juegos(){
+        return $this->belongsToMany(Juego::class, 'juegos_por_usuario', 'id_usuario', 'id_juego')
+                    ->withPivot('favorito');
+    }
+
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
