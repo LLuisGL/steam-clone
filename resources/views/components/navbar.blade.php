@@ -38,7 +38,7 @@
                 <div class="relative inline-block text-left">
                     <div>   
                         <button type="button" class="inline-flex w-full justify-center gap-x-1.0 bg-[#171d25]  pt-[5px] text-xs text-white" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                        {{auth()->user()->name}}
+                        {{auth()->user()->username}}
                         </button>
                     </div>
                 </div>
