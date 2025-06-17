@@ -13,22 +13,22 @@ class Juegos extends Model
 
     public function imagenes()
     {
-        return $this->hasMany(Imagen::class, 'id_juego');
+        return $this->hasMany(Imagenes::class, 'id_juego');
     }
 
     public function usuarios()
     {
-        return $this->belongsToMany(Usuario::class, 'juegos_por_usuario', 'id_juego', 'id_usuario')
+        return $this->belongsToMany(Users::class, 'juegos__por__usuarios', 'id_juego', 'id_usuario')
                     ->withPivot('favorito');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'tags_por_juego', 'id_juego', 'id_tag');
+        return $this->belongsToMany(Tags::class, 'tags__por__juegos', 'id_juego', 'id_tag');
     }
 
     public function plataformas()
     {
-        return $this->belongsToMany(Plataforma::class, 'plataformas_por_juego', 'id_juego', 'id_plataforma');
+        return $this->belongsToMany(Plataformas::class, 'plataformas__por__juegos', 'id_juego', 'id_plataforma');
     }
 }

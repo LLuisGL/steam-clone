@@ -13,6 +13,6 @@ class Tags extends Model
 
     public function juegos()
     {
-        return $this->belongsToMany(Juego::class, 'tags_por_juego', 'id_tag', 'id_juego');
+        return $this->belongsToMany(Juego::class, 'tags__por__juegos', 'id_tag', 'id_juego');
     }
 }

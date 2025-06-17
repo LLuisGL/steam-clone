@@ -16,6 +16,7 @@ class CreateTagsPorJuegosTable extends Migration
         Schema::create('tags__por__juegos', function (Blueprint $table) {
             $table->id();
             $table->foreignId("id_juego")->constrained("juegos");
+            $table->foreignId("id_tag")->constrained("tags");
             $table->timestamps();
         });
     }
