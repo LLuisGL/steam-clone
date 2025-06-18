@@ -103,7 +103,18 @@
                         </div>
                         <p class="text-white ml-2 pt-2">Ya disponible</p>
                         <div class="flex ml-2 h-full justify-between items-end mb-2">
-                            <p class="text-xs text-white">${{$informacion[0]->precio_normal}} USD</p>
+                            @php
+                                $precio_oferta = number_format($informacion[0]->precio_oferta,2);
+                                $precio_normal = number_format($informacion[0]->precio_normal,2);
+                            @endphp
+                            @if($informacion[0]->precio_oferta > 0)
+                                <p class="text-right text-white text-xs line-through">${{$precio_normal}}</p>    
+                                <p class="text-right text-[#afdf13]">${{$precio_oferta}}</p>
+                            @elseif($informacion[0]->precio_normal == 0)
+                                <p class="text-right text-white">Free to play</p>    
+                            @else
+                                <p class="text-right text-white">${{$precio_normal}}</p>    
+                            @endif
                             <div class="flex flex-row gap-2">
                                 @foreach($plataformas as $plataforma)
                                     <img src="/img/platforms/{{$plataforma->url_imagen}}" alt="{{$plataforma->url_imagen}}">
@@ -143,9 +154,9 @@
             </div>
             -->
             <div class="grid grid-cols-8 mb-4">
-                <div class="flex flex-col col-span-5 gap-2">
+                <div class="flex flex-col col-span-6 gap-4">
                     @foreach($juegos as $juego)
-                        <div class="grid grid-cols-8 h-24">
+                        <div class="grid grid-cols-8 h-20">
                             <div class="col-span-2 h-full bg-[#203647]">
                                 <img src="/img/{{$juego->id}}/{{$juego->imagenes->first()->url}}" alt="{{$juego->imagenes->first()->url}}" class="w-full h-24 object-cover">
                             </div>
@@ -157,15 +168,20 @@
                                 <div class="col-span-{{ $precio_oferta ? 3 : 4 }} pl-2 pt-2 flex flex-col justify-center">
                                     <p>{{$juego->nombre_juego}}</p>
                                     <div class="flex flex-row gap-1">
-                                        @foreach($plataformas as $plataforma)
+                                        @foreach($juego->plataformas as $plataforma)
                                             <img src="/img/platforms/{{$plataforma->url_imagen}}" class="opacity-50" alt="{{$plataforma->url_imagen}}">
                                         @endforeach
                                     </div>
-                                    <p class="text-gray-400 text-sm">Tags</p>
+                                    <div class="flex gap-1">
+                                        @foreach($juego->tags as $tag)
+                                            <p class="text-gray-400 text-sm">{{$tag->valor_tag}},</p>
+                                        @endforeach
+                                    </div>
+                                    
                                 </div>
                                 @if($juego->precio_oferta > 0)
                                     <div class="flex h-full items-center justify-center ">
-                                        <p class="text-[#afdf13] font-bold bg-[#4c6b22] text-center px-2">-10%</p>
+                                        <p class="text-[#afdf13] font-bold bg-[#4c6b22] text-center px-2">- {{ceil((1 - ($juego->precio_oferta / $juego->precio_normal)) * 100)}}%</p>
                                     </div>
                                 @endif
                                 <div class="text-m flex flex-col justify-evenly pr-2">
@@ -178,6 +194,8 @@
                                         @if($juego->precio_oferta > 0)
                                             <p class="text-right text-gray-600 text-xs line-through">${{$precio_normal}}</p>    
                                             <p class="text-right text-[#afdf13]">${{$precio_oferta}}</p>
+                                        @elseif($juego->precio_normal == 0)
+                                            <p class="text-right">Free to play</p>    
                                         @else
                                             <p class="text-right">${{$precio_normal}}</p>    
                                         @endif
@@ -189,7 +207,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="col-span-3">
+                <div class="col-span-2">
                     hola
                 </div>
             </div>
