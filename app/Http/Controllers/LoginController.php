@@ -27,15 +27,16 @@ class LoginController extends Controller
                 'login_error' => 'Las credenciales estan incorrectas',
             ])->withInput();
         } 
-        
+                
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
         Auth::login($user);
 
         return $this->autenticated($request,$user);
     }
 
     public function autenticated(Request $request,$user){
+        $esAdmin= $user->isAdmin();
+        session(['es_admin'=> $esAdmin]);
         return redirect('/');
     }
 }

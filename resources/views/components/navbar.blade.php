@@ -5,13 +5,26 @@
         <a href="/">
             <img src="./img/logo.png" alt="logo.png" class="w-40">
         </a>
+        @guest
         <div class="flex gap-4" >
             <a href="" class='text-white font-medium text-m font-sans uppercase'>Tienda</a>
             <a href="" class='text-white font-medium text-m font-sans uppercase'>Comunidad</a>
             <a href="" class='text-white font-medium text-m font-sans uppercase'>Acerca De</a>
             <a href="" class='text-white font-medium text-m font-sans uppercase'>Soporte</a>
         </div>
+        @endGuest
 
+        @auth
+        <div class="flex gap-4" >
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>Tienda</a>
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>Comunidad</a>
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>{{auth()->user()->username}}</a>
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>soporte</a>
+            @if(session('es_admin'))
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>Dev</a>
+            @endif
+        </div>
+        @endauth
         <div class="flex justify-center items-stat  gap-2">
 
             @guest
