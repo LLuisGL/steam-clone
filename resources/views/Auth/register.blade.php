@@ -69,6 +69,12 @@
                         <button type="submit"  class=" flex justify-center items-center bg-gradient-to-r from-[#06BFFF] to-[#2D73FF] w-full h-full text-white ">Crear</button>
                     </div>
 
+                    <div class ='flex justify-center mt-[10px]'>
+                        @if($errors->has('Mayor'))
+                            <label class="form-error-label text-[#C15755] text-xs">{{ $errors->first('Mayor') }}</label>
+                        @endif
+                    </div>
+
                 </form>
             </div>
            
