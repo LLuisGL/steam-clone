@@ -18,17 +18,76 @@
 
     <title>Registro</title>
 </head>
-<body>
 
-    <main class="">
+
+<body class='antialiased bg-[#181A21]'>
+
+    <header>
         @include('components.navbar')
-    </main>
+    </header>
+    
+    <main class= 'w-full h-full'>
+        <div class= "bg-[url('/img/register.jpg')] bg-no-repeat bg-cover w-full h-full flex justify-center items-center ">
 
-    <div  style = "background-color: #181A21;">
-        <div style = "background-color: #181A21;">
-            <div style = "background-color: #181A21;">
-                <br>
-                <form method='POST' action= "{{route('validar-registro')}}">
+            <div class='bg-[#181A21] rounded-sm flex flex-col justify-center items-center w-[400px] h-[500px] my-[70px] z-10 '>
+
+                <div class='justify-start text-white uppercase text-3xl tracking-wide font-light w-[270px] mb-[20px] '>
+                    CREA TU CUENTA
+                </div>
+
+                <form class ='flex flex-col' action="{{route('validar-registro')}}" method='POST'>
+                    @csrf
+                    <div class='my-[5px] flex flex-col pl-[65px]'>
+                        <label for="email" class='text-[#b8b6b4]'>Dirección de correo electrónico</label>
+                        <input class='w-[250px] bg-[#393c44] hover:bg-[#494c5c] rounded-sm text-white text-sm p-[2px]' type="email" name='email' id='email'
+                        autocomplete="off">
+                    </div>
+
+                    <div class='my-[5px] flex flex-col pl-[65px]'>
+                        <label for="username" class='text-[#b8b6b4]' >Usuario</label>
+                        <input class='w-[250px] bg-[#393c44] hover:bg-[#494c5c] rounded-sm text-white text-sm p-[2px]' type="text" name='username' id='username'
+                        autocomplete="off">
+                    </div>
+
+                    <div class='my-[5px] flex flex-col pl-[65px]'>
+                        <label for="name" class='text-[#b8b6b4]'>Nombre</label>
+                        <input class='w-[250px] bg-[#393c44] hover:bg-[#494c5c] rounded-sm text-white text-sm p-[2px]' type="text" name='name' id='name'
+                            autocomplete="off">
+                    </div>
+
+                    <div class='my-[5px] flex flex-col pl-[65px]'>
+                        <label for="password" class='text-[#b8b6b4]'>Contraseña</label>
+                        <input class='w-[250px] bg-[#393c44] hover:bg-[#494c5c] rounded-sm text-white text-sm p-[2px]   ' type="password" name='password' id='password'>
+                    </div>
+
+                    <div class='my-[20px] flex flex-row justify-center items-center pl-[20px]'>
+                        <input type="checkbox" id="Mayor" name="Mayor"/>
+                        <label for="Mayor" class=' pl-[10px] text-[#b8b6b4] text-xs'>Tengo 13 años o más y acepto los términos del Acuerdo de Suscriptor a Steam.</label>
+                    </div>
+
+                    <div class=" flex justify-start h-[20px] w-[175px] my-[5px] pl-[75px] " >
+                        <button type="submit"  class=" flex justify-center items-center bg-gradient-to-r from-[#06BFFF] to-[#2D73FF] w-full h-full text-white ">Crear</button>
+                    </div>
+
+                    <div class ='flex justify-center mt-[10px]'>
+                        @if($errors->has('Mayor'))
+                            <label class="form-error-label text-[#C15755] text-xs">{{ $errors->first('Mayor') }}</label>
+                        @endif
+                    </div>
+
+                </form>
+            </div>
+           
+        </div>
+    </main>
+     @include('components.footer')
+</body>
+</html>
+
+
+
+<!------         
+<form method='POST' action= "{{route('validar-registro')}}">
                     @csrf
                     
                     <div class="mb-3">
@@ -51,8 +110,4 @@
                     </div>
 
                 </form>
-            </div>
-        </div>
-    </div>    
-</body>
-</html>
+------>

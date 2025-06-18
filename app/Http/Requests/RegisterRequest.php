@@ -26,7 +26,21 @@ class RegisterRequest extends FormRequest
         return [
             'email' => 'required|string|email|max:255|unique:users',
             'name' => 'required|string|max:30|unique:users',
+            'username'=>'required|string|max:30|unique:users',
             'password' => 'required|string|min:8',
+            'Mayor'=> 'accepted',
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            'Mayor.accepted' => 'Debes confirmar que eres mayor de edad para continuar.',
+        ];
+    }
+
+    public function getCredential()
+    {
+        return $this->only(['email', 'name', 'username', 'password']);
     }
 }

@@ -5,13 +5,26 @@
         <a href="/">
             <img src="./img/logo.png" alt="logo.png" class="w-40">
         </a>
+        @guest
         <div class="flex gap-4" >
             <a href="" class='text-white font-medium text-m font-sans uppercase'>Tienda</a>
             <a href="" class='text-white font-medium text-m font-sans uppercase'>Comunidad</a>
             <a href="" class='text-white font-medium text-m font-sans uppercase'>Acerca De</a>
             <a href="" class='text-white font-medium text-m font-sans uppercase'>Soporte</a>
         </div>
+        @endGuest
 
+        @auth
+        <div class="flex gap-4" >
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>Tienda</a>
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>Comunidad</a>
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>{{auth()->user()->username}}</a>
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>soporte</a>
+            @if(session('es_admin'))
+            <a href="" class='text-white font-medium text-m font-sans uppercase'>Dev</a>
+            @endif
+        </div>
+        @endauth
         <div class="flex justify-center items-stat  gap-2">
 
             @guest
@@ -38,7 +51,7 @@
                 <div class="relative inline-block text-left">
                     <div>   
                         <button type="button" class="inline-flex w-full justify-center gap-x-1.0 bg-[#171d25]  pt-[5px] text-xs text-white" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                        {{auth()->user()->name}}
+                        {{auth()->user()->username}}
                         </button>
                     </div>
                 </div>

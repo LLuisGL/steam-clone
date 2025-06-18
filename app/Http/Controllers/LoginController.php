@@ -20,22 +20,23 @@ class LoginController extends Controller
     public function login(LoginRequest $request){
 
         $credentials = $request->getCredential();
-
+       
         if(!Auth::validate($credentials)){
 
             return back()->withErrors([
                 'login_error' => 'Las credenciales estan incorrectas',
             ])->withInput();
         } 
-        
+                
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
         Auth::login($user);
 
         return $this->autenticated($request,$user);
     }
 
     public function autenticated(Request $request,$user){
+        $esAdmin= $user->isAdmin();
+        session(['es_admin'=> $esAdmin]);
         return redirect('/');
     }
 }

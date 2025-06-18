@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -51,5 +52,15 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'usuario_rol', 'id_usuario', 'id_rol');
+    }
+
+        public function isAdmin()
+    {
+        return $this->roles()->where('role', 'ADMINISTRADOR')->exists();
     }
 }
