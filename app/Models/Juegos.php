@@ -31,4 +31,10 @@ class Juegos extends Model
     {
         return $this->belongsToMany(Plataformas::class, 'plataformas__por__juegos', 'id_juego', 'id_plataforma');
     }
+
+    public function carroItems()
+    {
+    return $this->hasMany(CarroItem::class, 'id_juego');
+    }
+
 }
