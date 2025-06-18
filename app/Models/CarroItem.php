@@ -19,6 +19,6 @@ class CarroItem extends Model
 
     public function juego()
     {
-        return $this->belongsTo(Juego::class, 'id_juego');
+        return $this->belongsTo(Juegos::class, 'id_juego');
     }
 }

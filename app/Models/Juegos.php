@@ -37,4 +37,11 @@ class Juegos extends Model
     return $this->hasMany(CarroItem::class, 'id_juego');
     }
 
+    public function getDescuento(){
+        if ($this->precio_normal > 0) {
+            return round((($this->precio_normal - $this->precio_oferta) / $this->precio_normal) * 100, 2);
+        }
+        return 0;
+    }
+
 }

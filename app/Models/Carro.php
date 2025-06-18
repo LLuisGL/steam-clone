@@ -9,11 +9,11 @@ class Carro extends Model
 {
     use HasFactory;
     protected $table = 'carros';
-    protected $fillable = ['id_carro', 'id_usuario'];
+    protected $fillable = ['id_usuario'];
 
     public function items()
     {
-        return $this->hasMany(CarroItem::class, 'id_carro');
+        return $this->hasMany(CarroItem::class,'id_carro');
     }
 
     public function usuario()
