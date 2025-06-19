@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Juegos;
 
 class JuegosController extends Controller
@@ -45,20 +47,30 @@ class JuegosController extends Controller
     }
 
     public function index(){
-        $juegos = Juegos::with([
-            'plataformas',
-            'tags',
-            'imagenes' => function ($query) {
-                $query->where('tag', 'priority');
-            }
-        ])->get();
-        return view('index', ['juegos'=>$juegos]);
+
+        $user= Auth::user();
+        if(Auth::check() && $user->isAdmin() ){
+            $juegos = Juegos::with([
+                'plataformas',
+                'tags',
+                'imagenes' => function ($query) {
+                    $query->where('tag', 'priority');
+                }
+            ])->get();
+            return view('index', ['juegos'=>$juegos]); 
+        }
+        return redirect()->back()->with('Error', 'No tienes permiso para ingresar');
+        
     }
 
     public function eliminar($id){
-        $item = Juegos::find($id);
-        $item->delete();
-        return redirect()->back()->with('Bien', 'Juego eliminado');
+        $user= Auth::user();
+        if(Auth::check() && $user->isAdmin() ){
+            $item = Juegos::find($id);
+            $item->delete();
+            return redirect()->back()->with('Bien', 'Juego eliminado');
+        }
+        return redirect()->back()->with('Error', 'No tienes permiso para ingresar');
     }
 
     public function guardar(Request $request)

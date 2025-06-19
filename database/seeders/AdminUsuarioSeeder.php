@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Carro;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Database\Seeder;
@@ -28,9 +29,12 @@ class AdminUsuarioSeeder extends Seeder
             'name' => 'Administrador',
             'username' => 'AdminUees1',
             'email' => 'admin@uees.com',
-            'password' => Hash::make('Admin123'), 
+            'password' => 'Admin123', 
         ]);
 
         $usuarioAdmin->roles()->attach($rolAdmin->id);
+        Carro::create([
+            'id_usuario' => $usuarioAdmin->id
+        ]);
     }
 }

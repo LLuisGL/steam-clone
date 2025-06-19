@@ -21,7 +21,7 @@
             <a href="" class='text-white font-medium text-m font-sans uppercase'>{{auth()->user()->username}}</a>
             <a href="" class='text-white font-medium text-m font-sans uppercase'>soporte</a>
             @if(session('es_admin'))
-            <a href="" class='text-white font-medium text-m font-sans uppercase'>Dev</a>
+            <a href="/dev" class='text-white font-medium text-m font-sans uppercase'>Dev</a>
             @endif
         </div>
         @endauth
