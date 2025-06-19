@@ -18,8 +18,7 @@ class Juegos extends Model
 
     public function usuarios()
     {
-        return $this->belongsToMany(Users::class, 'juegos__por__usuarios', 'id_juego', 'id_usuario')
-                    ->withPivot('favorito');
+        return $this->belongsToMany(Users::class, 'juegos__por__usuarios', 'id_juego', 'id_usuario');
     }
 
     public function tags()
@@ -38,10 +37,16 @@ class Juegos extends Model
     }
 
     public function getDescuento(){
-        if ($this->precio_normal > 0) {
-            return round((($this->precio_normal - $this->precio_oferta) / $this->precio_normal) * 100);
+        if ($this->precio_normal > 0 && $this-> precio_oferta >0) {
+                return round((($this->precio_normal - $this->precio_oferta) / $this->precio_normal) * 100);
         }
         return 0;
     }
 
+    public function getValorJuego(){
+        if ($this->precio_oferta > 0 && $this->precio_oferta < $this->precio_normal) {
+            return $this->precio_oferta;
+        }
+        return $this->precio_normal;
+    }
 }

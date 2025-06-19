@@ -17,9 +17,16 @@ class compraController extends Controller
             $carroUser = Carro::with(['items.juego'])->where('id_usuario', $user->id)->first();
 
             if($carroUser){
+
+                $total = $carroUser->items->sum(function ($item) {
+                    return $item->juego->getValorJuego();
+                });
+                
+
                 return view('shop\shopCar',[
                     'carro' =>$carroUser,
                     'items'=>$carroUser->items,
+                    'total'=>$total
                 ]);
             }
             else {
@@ -56,6 +63,12 @@ class compraController extends Controller
             return redirect()->back()->with('Error', 'El juego ya está en el carrito.');
         }
 
+        $yaComprado = $usuario->juegos()->where('id_juego', $id_juego)->exists();
+
+        if ($yaComprado) {
+        return redirect()->back()->with('Error', 'Ya tienes este juego en tu biblioteca.');
+        }
+
         carroItem::create([
         'id_carro' => $carro->id,
         'id_juego' => $id_juego,
@@ -68,7 +81,4 @@ class compraController extends Controller
         $item->delete();
         return redirect()->back()->with('Bien', 'Juego eliminado del carrito');
     }
-
-
-
 }
