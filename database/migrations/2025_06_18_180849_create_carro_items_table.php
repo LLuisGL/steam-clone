@@ -17,8 +17,8 @@ class CreateCarroItemsTable extends Migration
             $table->id(); 
             $table->unsignedBigInteger('id_carro'); 
             $table->unsignedBigInteger('id_juego'); 
-            $table->integer('cantidad');
-            $table->decimal('precio', 8, 2);
+            $table->integer('cantidad')->nullable();
+            $table->decimal('precio', 8, 2)->nullable();
             $table->unique(['id_carro', 'id_juego']);
             $table->foreign('id_carro')->references('id')->on('carros')->onDelete('cascade');
             $table->foreign('id_juego')->references('id')->on('juegos')->onDelete('cascade');

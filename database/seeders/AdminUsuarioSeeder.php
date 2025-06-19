@@ -20,7 +20,7 @@ class AdminUsuarioSeeder extends Seeder
         $rolAdmin = Role::where('role', 'ADMINISTRADOR')->first();
         if (!$rolAdmin) {
             $rolAdmin = Role::create([
-                'nombre' => 'ADMINISTRADOR',
+                'role' => 'ADMINISTRADOR',
                 
             ]);
         }

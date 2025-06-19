@@ -23,7 +23,7 @@ class compraController extends Controller
                 });
                 
 
-                return view('shop\shopCar',[
+                return view('shop.shopCar',[
                     'carro' =>$carroUser,
                     'items'=>$carroUser->items,
                     'total'=>$total
