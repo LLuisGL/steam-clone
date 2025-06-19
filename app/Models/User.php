@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -41,4 +42,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // aplicamos un mutator
+
+    public function juegos(){
+        return $this->belongsToMany(Juegos::class, 'juegos__por__usuarios', 'id_usuario', 'id_juego');
+    }
+
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'usuario_rol', 'id_usuario', 'id_rol');
+    }
+    
+        public function isAdmin()
+    {
+        return $this->roles()->where('role', 'ADMINISTRADOR')->exists();
+    }
+    public function carro()
+    {
+    return $this->hasOne(Carro::class, 'id_usuario');
+    }
 }
