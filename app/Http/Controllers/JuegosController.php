@@ -127,10 +127,14 @@ class JuegosController extends Controller
     }
 
     public function editar($id){
-        $juegoToEdit = Juegos::find($id);
-        $plataformas = Plataformas::all();
-        $tags = Tags::all();
-        return view('edit', ['plataformas'=>$plataformas, 'tags'=>$tags, 'juego' => $juegoToEdit]);
+        $user= Auth::user();
+        if(Auth::check() && $user->isAdmin() ){
+            $juegoToEdit = Juegos::find($id);
+            $plataformas = Plataformas::all();
+            $tags = Tags::all();
+            return view('edit', ['plataformas'=>$plataformas, 'tags'=>$tags, 'juego' => $juegoToEdit]); 
+        }
+        return redirect()->back()->with('Error', 'No tienes permiso para ingresar');
     }
 
     public function actualizar(Request $request, $id)
