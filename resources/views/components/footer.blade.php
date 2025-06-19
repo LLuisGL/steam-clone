@@ -3,14 +3,14 @@
 
         <div class='border-t-[1.5px] border-[#bababa] flex flew-row'>
             <div class='h-[50px] w-[100px]  flex ustify-center items-center'>
-                <img src="./img/Logo_valve_new.png"
+                <img src="{{asset('img/Logo_valve_new.png')}}"
                 class ='object-scale-down' >
             </div>
 
             <div class='px-[475px]'></div>
 
             <div class ='h-[50px] w-[50px]'>
-                <img src="/img/steam_icon.png" 
+                <img src="{{asset('img/steam_icon.png')}}" 
                 class= 'object-scale-down'>
             </div>
         </div>
@@ -28,7 +28,7 @@
     <div class='bg-[#181A21] flex flex-row justify-center pt-[10px]'> 
         <div class='h-[50px] w-[215px] border-r-[1.5px] border-[#bababa] flex items-center flex-row'>
             <div class= "h-[50px] w-[50px]">
-                <img src="./img/git.png" class= 'object-scale-down'>
+                <img src="{{asset('img/git.png')}}" class= 'object-scale-down'>
             </div>
             <div class='text-center text-white underline pl-[5px] pr-[5px]'>
                 <a href="https://github.com/carloselcrackt1">Carlos Auqui Molina</a>
@@ -37,7 +37,7 @@
 
         <div class='h-[50px] w-[225px] flex items-center flex-row pl-[5px]'>
             <div class= "h-[50px] w-[50px]">
-                <img src="./img/git.png" class= 'object-scale-down'>
+                <img src="{{asset('img/git.png')}}" class= 'object-scale-down'>
             </div>
             <div class='text-center text-white underline pl-[5px] pr-[5px]'>
                 <a href="https://github.com/LLuisGL">Luis Goncalves Lopez</a>

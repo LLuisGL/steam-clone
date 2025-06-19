@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\JuegosController;
 use App\Http\Controllers\compraController;
+use App\Http\Controllers\inventarioController;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\ImagenesController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,8 @@ Route::get('/cuenta',[cuentaController::class,'show']);
 Route::get('/cart',[compraController::class,'show']);
 Route::delete('/cart/{item}', [compraController::class, 'destroy'])->name('carrito.destroy');
 Route::post('/cart/agregar', [compraController::class, 'agregar'])->name('carrito.agregar');
+Route::get('/inventario',[inventarioController::class,'show']);
+Route::post('/compra-hecha',[inventarioController::class,'comprar'])->name('compra.hecha');
 
 Route::get('/dev',[CrudController::class, 'index'])->name('crud');
 Route::get('/dev/index', [JuegosController::class, 'index'])->name('index');
