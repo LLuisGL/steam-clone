@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Juegos;
+use App\Models\Plataformas;
+use App\Models\Tags;
 
 class JuegosController extends Controller
 {
@@ -89,7 +91,6 @@ class JuegosController extends Controller
             ]);
         }
 
-        // Asociar tags y plataformas
         $tags = $request->input('tags');
         $plataformas = $request->input('plataformas');
 
@@ -111,5 +112,40 @@ class JuegosController extends Controller
         
 
         return redirect()->route('home')->with('success', 'Juego creado con éxito');
+    }
+
+    public function editar($id){
+        $juegoToEdit = Juegos::find($id);
+        $plataformas = Plataformas::all();
+        $tags = Tags::all();
+        return view('edit', ['plataformas'=>$plataformas, 'tags'=>$tags, 'juego' => $juegoToEdit]);
+    }
+
+    public function actualizar(Request $request, $id)
+    {
+        $request->validate([
+            'nombreJuego' => 'required|string|max:255',
+            'descripcionJuego' => 'nullable|string',
+            'precioNormal' => 'required|numeric',
+            'precioOferta' => 'nullable|numeric',
+            'tags' => 'array',
+            'plataformas' => 'array',
+        ]);
+
+        $juego = Juegos::find($id);
+
+        $juego->nombre_juego = $request->input('nombreJuego');
+        $juego->descripcion_juego = $request->input('descripcionJuego');
+        $juego->precio_normal = $request->input('precioNormal');
+        $juego->precio_oferta = $request->input('precioOferta');
+        $juego->save();
+
+        $tags = $request->input('tags');
+        $plataformas = $request->input('plataformas');
+        $juego->tags()->sync(explode(",", $tags[0]));
+        
+        $juego->plataformas()->sync(explode(",", $plataformas[0]));
+
+        return redirect()->route('home')->with('success', 'actualizado con éxito.');
     }
 }

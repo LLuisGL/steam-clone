@@ -45,3 +45,5 @@ Route::get('/dev/index', [JuegosController::class, 'index'])->name('index');
 Route::post('/subir-imagen', [ImagenesController::class, 'subir'])->name('imagen.subir');
 Route::post('/juegos/guardar', [JuegosController::class, 'guardar'])->name('juegos.guardar');
 Route::post('/dev/delete/{juego}', [JuegosController::class, 'eliminar'])->name('juegos.eliminar');
+Route::get('/dev/edit/{juego}', [JuegosController::class, 'editar'])->name('juegos.editar');
+Route::post('/dev/edit/complete/{id}/', [JuegosController::class, 'actualizar'])->name('juegos.actualizar');
