@@ -31,7 +31,7 @@
                         @foreach($items as $item)
                             <div class='bg-[#00000075] grid grid-cols-3 gap-2 p-[15px] w-[615px] mt-[20px]'>
                                 <div class=''>
-                                    <img src="/img/{{$item->juego->id}}/{{$item->juego->imagenes->first()->url}}"class="w-full h-24 object-cover">
+                                    <img src="{{asset('storage/' . $item->juego->imagenes->first()->url)}}"class="w-full h-24 object-cover">
                                 </div>
 
                                 <div class='col-span-2 flex flex-col justify-start'>

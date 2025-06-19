@@ -74,7 +74,7 @@
                                 
                             </div>
 
-                            <a href="#" class="bg-[#181A2] text-[#AFAFAF] flex justify-center items-center h-[20px] underline hover:text-white" >Ayuda, no puedo iniciar sesion</a>
+                            <a href="/soporte" class="bg-[#181A2] text-[#AFAFAF] flex justify-center items-center h-[20px] underline hover:text-white" >Ayuda, no puedo iniciar sesion</a>
                         </form>
                     </div>
                 </div>

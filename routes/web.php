@@ -26,6 +26,9 @@ Route::get('/', [JuegosController::class, 'show'])->name('home');
 Route::get('/chat', function() {
     return view('chat');
 });
+Route::get('/soporte', function() {
+    return view('soporte');
+});
 
 Route::get('/login',[LoginController::class, 'show'])->name('login');
 Route::get('/registro',[RegisterController::class,'show']);
