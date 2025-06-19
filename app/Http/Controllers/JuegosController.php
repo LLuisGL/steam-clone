@@ -43,4 +43,56 @@ class JuegosController extends Controller
 
         return view('home',['informacion'=>$juego, 'img_principal'=>$imagen_principal,'imgs_secundarias'=>$imagenes_secundarias, 'plataformas'=>$plataformas, 'juegos'=>$juegos]);
     }
+
+    public function guardar(Request $request)
+    {
+        $request->validate([
+            'nombreJuego' => 'required|string|max:255',
+            'descripcionJuego' => 'required|string',
+            'precioNormal' => 'required|numeric',
+            'precioOferta' => 'required|numeric',
+            'tags' => 'array',
+            'plataformas' => 'array',
+            'rutas_imagenes' => 'required'
+        ]);
+
+        $rutas = json_decode($request->input('rutas_imagenes'), true);
+
+        $juego = new Juegos();
+        $juego->nombre_juego = $request->input('nombreJuego');
+        $juego->descripcion_juego = $request->input('descripcionJuego');
+        $juego->precio_oferta = $request->input('precioOferta');
+        $juego->precio_normal = $request->input('precioNormal');
+        $juego->save();
+
+        foreach ($rutas as $index => $ruta) {
+            $juego->imagenes()->create([
+                'url' => $ruta,
+                'tag' => $index === 0 ? 'priority' : 'secondary'
+            ]);
+        }
+
+        // Asociar tags y plataformas
+        $tags = $request->input('tags');
+        $plataformas = $request->input('plataformas');
+
+        foreach (explode(",",$tags[0]) as $tag) {
+            DB::table('tags__por__juegos')->insert([
+                'id_juego' => $juego->id,
+                'id_tag' => $tag
+            ]);
+        }
+
+        
+        foreach (explode(",",$plataformas[0]) as $plataforma) {
+            DB::table('plataformas__por__juegos')->insert([
+                'id_juego' => $juego->id,
+                'id_plataforma' => $plataforma
+            ]);
+        }
+        
+        
+
+        return redirect()->route('home')->with('success', 'Juego creado con éxito');
+    }
 }

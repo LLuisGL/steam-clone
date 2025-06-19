@@ -3,6 +3,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\JuegosController;
+use App\Http\Controllers\CrudController;
+use App\Http\Controllers\ImagenesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,3 +29,7 @@ Route::get('/registro',[RegisterController::class,'show']);
 Route::post('/validar-registro',[RegisterController::class,'register'])->name('validar-registro');
 Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
 Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
+Route::get('/dev',[CrudController::class, 'index'])->name('crud');
+
+Route::post('/subir-imagen', [ImagenesController::class, 'subir'])->name('imagen.subir');
+Route::post('/juegos/guardar', [JuegosController::class, 'guardar'])->name('juegos.guardar');
