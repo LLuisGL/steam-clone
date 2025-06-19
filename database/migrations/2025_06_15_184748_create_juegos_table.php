@@ -15,10 +15,10 @@ class CreateJuegosTable extends Migration
     {
         Schema::create('juegos', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre_juego");
-            $table->string("descripcion_juego");
-            $table->double("precio_normal");
-            $table->double("precio_oferta");
+            $table->string("nombre_juego")->onDelete('cascade');;
+            $table->string("descripcion_juego")->onDelete('cascade');;
+            $table->double("precio_normal")->onDelete('cascade');;
+            $table->double("precio_oferta")->onDelete('cascade');;
             $table->timestamps();
         });
     }

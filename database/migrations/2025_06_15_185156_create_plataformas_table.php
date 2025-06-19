@@ -15,7 +15,7 @@ class CreatePlataformasTable extends Migration
     {
         Schema::create('plataformas', function (Blueprint $table) {
             $table->id();
-            $table->string("url_imagen");
+            $table->string("url_imagen")->onDelete('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

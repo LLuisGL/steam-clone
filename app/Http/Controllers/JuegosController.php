@@ -8,7 +8,7 @@ use App\Models\Juegos;
 
 class JuegosController extends Controller
 {
-    public function index(){
+    public function show(){
         //HEADER
         $juego = DB::table('juegos as j')
         ->select('j.nombre_juego','j.precio_normal', 'j.precio_oferta', 'j.id')
@@ -42,6 +42,23 @@ class JuegosController extends Controller
 
 
         return view('home',['informacion'=>$juego, 'img_principal'=>$imagen_principal,'imgs_secundarias'=>$imagenes_secundarias, 'plataformas'=>$plataformas, 'juegos'=>$juegos]);
+    }
+
+    public function index(){
+        $juegos = Juegos::with([
+            'plataformas',
+            'tags',
+            'imagenes' => function ($query) {
+                $query->where('tag', 'priority');
+            }
+        ])->get();
+        return view('index', ['juegos'=>$juegos]);
+    }
+
+    public function eliminar($id){
+        $item = Juegos::find($id);
+        $item->delete();
+        return redirect()->back()->with('Bien', 'Juego eliminado');
     }
 
     public function guardar(Request $request)

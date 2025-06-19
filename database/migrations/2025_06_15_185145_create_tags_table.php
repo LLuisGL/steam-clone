@@ -15,8 +15,8 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string("valor_tag");
-            $table->string("valor_color");
+            $table->string("valor_tag")->onDelete('cascade');;
+            $table->string("valor_color")->onDelete('cascade');;
             $table->timestamps();
         });
     }

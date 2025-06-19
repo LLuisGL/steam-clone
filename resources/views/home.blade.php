@@ -83,22 +83,22 @@
                 <div class="h-[350px] flex">
                     <div class="drop-shadow-2xl relative w-full h-full overflow-hidden">
                         <img id="img_replace" src="" alt="" class="absolute inset-0 w-full h-full object-cover pointer-events-none fade-img ">    
-                        <img id="img_main" src="/img/{{$informacion[0]->id}}/{{$img_principal[0]->url}}" alt="{{$img_principal[0]->url}}" class="fade-img absolute inset-0 w-full h-full object-cover">
+                        <img id="img_main" src="storage/{{$img_principal[0]->url}}" alt="{{$img_principal[0]->url}}" class="fade-img absolute inset-0 w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col justify-center w-1/3 h-full bg-[#0f1922] pr-2 ">
                         <p class="ml-2 text-white text-2xl mt-4 h-2/3 justify-center items-center">{{$informacion[0]->nombre_juego}}</p>
                         <div class="grid grid-cols-2 h-1/2 gap-2">
                             <div class="bg-red-100">
-                                <img id="img_1" src="/img/{{$informacion[0]->id}}/{{$imgs_secundarias[0]->url}}" alt="{{$imgs_secundarias[0]->url}}" class="w-full h-full object-cover">
+                                <img id="img_1" src="storage/{{$imgs_secundarias[0]->url}}" alt="{{$imgs_secundarias[0]->url}}" class="w-full h-full object-cover">
                             </div>
                             <div class="bg-red-200">
-                                <img id="img_2" src="/img/{{$informacion[0]->id}}/{{$imgs_secundarias[1]->url}}" alt="{{$imgs_secundarias[1]->url}}" class="w-full h-full object-cover">
+                                <img id="img_2" src="storage/{{$imgs_secundarias[1]->url}}" alt="{{$imgs_secundarias[1]->url}}" class="w-full h-full object-cover">
                             </div>
                             <div class="bg-red-300">
-                                <img id="img_3" src="/img/{{$informacion[0]->id}}/{{$imgs_secundarias[2]->url}}" alt="{{$imgs_secundarias[2]->url}}" class="w-full h-full object-cover">
+                                <img id="img_3" src="storage/{{$imgs_secundarias[2]->url}}" alt="{{$imgs_secundarias[2]->url}}" class="w-full h-full object-cover">
                             </div>
                             <div class="bg-red-400">
-                                <img id="img_4" src="/img/{{$informacion[0]->id}}/{{$imgs_secundarias[3]->url}}" alt="{{$imgs_secundarias[3]->url}}" class="w-full h-full object-cover">
+                                <img id="img_4" src="storage/{{$imgs_secundarias[3]->url}}" alt="{{$imgs_secundarias[3]->url}}" class="w-full h-full object-cover">
                             </div>
                         </div>
                         <p class="text-white ml-2 pt-2">Ya disponible</p>
@@ -117,7 +117,7 @@
                             @endif
                             <div class="flex flex-row gap-2">
                                 @foreach($plataformas as $plataforma)
-                                    <img src="/img/platforms/{{$plataforma->url_imagen}}" alt="{{$plataforma->url_imagen}}">
+                                    <img src="img/platforms/{{$plataforma->url_imagen}}" alt="{{$plataforma->url_imagen}}">
                                 @endforeach
                             </div>
                         </div>
@@ -153,12 +153,12 @@
                 </div>
             </div>
             -->
-            <div class="grid grid-cols-8 mb-4">
-                <div class="flex flex-col col-span-6 gap-4">
+            <div class="mb-4">
+                <div class="flex flex-col gap-4">
                     @foreach($juegos as $juego)
                         <div class="grid grid-cols-8 h-20">
                             <div class="col-span-2 h-full bg-[#203647]">
-                                <img src="/img/{{$juego->id}}/{{$juego->imagenes->first()->url}}" alt="{{$juego->imagenes->first()->url}}" class="w-full h-24 object-cover">
+                                <img src="{{asset('storage/' . $juego->imagenes->first()->url)}}" alt="{{$juego->imagenes->first()->url}}" class="w-full h-24 object-cover">
                             </div>
                             <div class="col-span-6 grid grid-cols-5 h-full bg-[#203647] text-white">
                                 @php
@@ -169,7 +169,7 @@
                                     <p>{{$juego->nombre_juego}}</p>
                                     <div class="flex flex-row gap-1">
                                         @foreach($juego->plataformas as $plataforma)
-                                            <img src="/img/platforms/{{$plataforma->url_imagen}}" class="opacity-50" alt="{{$plataforma->url_imagen}}">
+                                            <img src="{{asset('img/platforms/' . $plataforma->url_imagen)}}" class="opacity-50" alt="{{$plataforma->url_imagen}}">
                                         @endforeach
                                     </div>
                                     <div class="flex gap-1">
@@ -181,7 +181,7 @@
                                 </div>
                                 @if($juego->precio_oferta > 0)
                                     <div class="flex h-full items-center justify-center ">
-                                        <p class="text-[#afdf13] font-bold bg-[#4c6b22] text-center px-2">-10%</p>
+                                        <p class="text-[#afdf13] font-bold bg-[#4c6b22] text-center px-2">{{$juego->getDescuento()}}%</p>
                                     </div>
                                 @endif
                                 <div class="text-m flex flex-col justify-evenly pr-2">
@@ -216,9 +216,6 @@
                             </form>
                         </div>
                     @endforeach
-                </div>
-                <div class="col-span-2">
-                    hola
                 </div>
             </div>
         </div>

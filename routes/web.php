@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [JuegosController::class, 'index'])->name('home');
+Route::get('/', [JuegosController::class, 'show'])->name('home');
 
 Route::get('/chat', function() {
     return view('chat');
@@ -37,6 +37,8 @@ Route::delete('/cart/{item}', [compraController::class, 'destroy'])->name('carri
 Route::post('/cart/agregar', [compraController::class, 'agregar'])->name('carrito.agregar');
 
 Route::get('/dev',[CrudController::class, 'index'])->name('crud');
+Route::get('/dev/index', [JuegosController::class, 'index'])->name('index');
 
 Route::post('/subir-imagen', [ImagenesController::class, 'subir'])->name('imagen.subir');
 Route::post('/juegos/guardar', [JuegosController::class, 'guardar'])->name('juegos.guardar');
+Route::post('/dev/delete/{juego}', [JuegosController::class, 'eliminar'])->name('juegos.eliminar');

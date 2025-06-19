@@ -17,32 +17,32 @@ class ImagenesSeeder extends Seeder
         //DESTINY
 
         Imagenes::create([
-            'id_juego' => 1,
-            'url' => 'destiny.jpg',
+            'id_juego' => 1, 
+            'url' => 'imagenes/1/destiny.jpg',
             'tag' => 'priority'
         ]);
 
         Imagenes::create([
             'id_juego' => 1,
-            'url' => 'img_1.jpg',
+            'url' => 'imagenes/1/img_1.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 1,
-            'url' => 'img_2.jpg',
+            'url' => 'imagenes/1/img_2.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 1,
-            'url' => 'img_3.jpg',
+            'url' => 'imagenes/1/img_3.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 1,
-            'url' => 'img_4.jpg',
+            'url' => 'imagenes/1/img_4.jpg',
             'tag' => 'secondary'
         ]);
 
@@ -50,31 +50,31 @@ class ImagenesSeeder extends Seeder
 
         Imagenes::create([
             'id_juego' => 2,
-            'url' => 'tfortress.jpg',
+            'url' => 'imagenes/2/tfortress.jpg',
             'tag' => 'priority'
         ]);
 
         Imagenes::create([
             'id_juego' => 2,
-            'url' => 'img_1.jpg',
+            'url' => 'imagenes/2/img_1.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 2,
-            'url' => 'img_2.jpg',
+            'url' => 'imagenes/2/img_2.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 2,
-            'url' => 'img_3.jpg',
+            'url' => 'imagenes/2/img_3.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 2,
-            'url' => 'img_4.jpg',
+            'url' => 'imagenes/2/img_4.jpg',
             'tag' => 'secondary'
         ]);
 
@@ -82,31 +82,31 @@ class ImagenesSeeder extends Seeder
 
         Imagenes::create([
             'id_juego' => 3,
-            'url' => 'balatro.jpg',
+            'url' => 'imagenes/3/balatro.jpg',
             'tag' => 'priority'
         ]);
 
         Imagenes::create([
             'id_juego' => 3,
-            'url' => 'img_1.jpg',
+            'url' => 'imagenes/3/img_1.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 3,
-            'url' => 'img_2.jpg',
+            'url' => 'imagenes/3/img_2.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 3,
-            'url' => 'img_3.jpg',
+            'url' => 'imagenes/3/img_3.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 3,
-            'url' => 'img_4.jpg',
+            'url' => 'imagenes/3/img_4.jpg',
             'tag' => 'secondary'
         ]);
 
@@ -114,31 +114,31 @@ class ImagenesSeeder extends Seeder
 
         Imagenes::create([
             'id_juego' => 4,
-            'url' => 'revil.jpg',
+            'url' => 'imagenes/4/revil.jpg',
             'tag' => 'priority'
         ]);
 
         Imagenes::create([
             'id_juego' => 4,
-            'url' => 'img_1.jpg',
+            'url' => 'imagenes/4/img_1.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 4,
-            'url' => 'img_2.jpg',
+            'url' => 'imagenes/4/img_2.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 4,
-            'url' => 'img_3.jpg',
+            'url' => 'imagenes/4/img_3.jpg',
             'tag' => 'secondary'
         ]);
 
         Imagenes::create([
             'id_juego' => 4,
-            'url' => 'img_4.jpg',
+            'url' => 'imagenes/4/img_4.jpg',
             'tag' => 'secondary'
         ]);
     }

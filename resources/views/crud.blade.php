@@ -22,6 +22,7 @@
 </head>
 <body class="h-screen bg-[#1a293a]">
     @include('components.navbar')
+    <a href="/dev/index" class="z-10 fixed bottom-10 left-10 bg-gray-800 w-48 p-4 rounded-lg border-1 border-gray-300 hover:bg-gray-900"><p class="text-white text-center">Juegos</p></a>
     <form id="form-principal"method="POST" action="{{ route('juegos.guardar') }}">
         @csrf
         <div class="h-full grid grid-cols-5 gap-2 px-48 pt-48 pb-2 text-white">
@@ -96,53 +97,53 @@
     @include('components.footer')
     <script src="{{ asset('js/home.js') }}"></script>
     <script>
-    const inputImagen = document.getElementById('input-imagen');
-    const preview = document.getElementById('preview-imagen');
-    const rutasInput = document.getElementById('rutas_imagenes');
-    const csrfToken = '{{ csrf_token() }}';
+        const inputImagen = document.getElementById('input-imagen');
+        const preview = document.getElementById('preview-imagen');
+        const rutasInput = document.getElementById('rutas_imagenes');
+        const csrfToken = '{{ csrf_token() }}';
 
-    let rutas = [];
+        let rutas = [];
 
-    inputImagen?.addEventListener('change', function () {
-        const files = Array.from(this.files);
-        if (!files.length) return;
+        inputImagen?.addEventListener('change', function () {
+            const files = Array.from(this.files);
+            if (!files.length) return;
 
-        files.forEach(file => {
-            const formData = new FormData();
-            formData.append('imagen', file);
+            files.forEach(file => {
+                const formData = new FormData();
+                formData.append('imagen', file);
 
-            fetch("{{ route('imagen.subir') }}", {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken
-                },
-                body: formData
-            })
-            .then(async response => {
-                const contentType = response.headers.get("content-type") || "";
-                if (!response.ok || !contentType.includes("application/json")) {
-                    const html = await response.text();
-                }
-                return response.json();
-            })
-            .then(data => {
-                const img = document.createElement('img');
-                img.src = data.url;
-                img.className = "w-24 h-24 opacity-80 hover:opacity-100 rounded-xl cursor-pointer cover";
-                preview.appendChild(img);
+                fetch("{{ route('imagen.subir') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: formData
+                })
+                .then(async response => {
+                    const contentType = response.headers.get("content-type") || "";
+                    if (!response.ok || !contentType.includes("application/json")) {
+                        const html = await response.text();
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const img = document.createElement('img');
+                    img.src = data.url;
+                    img.className = "w-24 h-24 opacity-80 hover:opacity-100 rounded-xl cursor-pointer cover";
+                    preview.appendChild(img);
 
-                // Agregar ruta al array
-                rutas.push(data.path);
-                rutasInput.value = JSON.stringify(rutas);
-            })
-            .catch(error => {
-                console.error(error);
+                    // Agregar ruta al array
+                    rutas.push(data.path);
+                    rutasInput.value = JSON.stringify(rutas);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
             });
-        });
 
-        this.value = '';
-    });
-</script>
+            this.value = '';
+        });
+    </script>
 
 <script>
     const selectTag = document.getElementById('tagsJuego');

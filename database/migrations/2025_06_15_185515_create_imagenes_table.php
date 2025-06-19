@@ -15,9 +15,9 @@ class CreateImagenesTable extends Migration
     {
         Schema::create('imagenes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("id_juego")->constrained("juegos");
-            $table->string("url");
-            $table->string("tag");
+            $table->foreignId("id_juego")->constrained("juegos")->onDelete('cascade');;
+            $table->string("url")->onDelete('cascade');;
+            $table->string("tag")->onDelete('cascade');;
             $table->timestamps();
         });
     }

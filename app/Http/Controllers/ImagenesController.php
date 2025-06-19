@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\Juegos;
 
 class ImagenesController extends Controller
 {
@@ -14,8 +15,10 @@ class ImagenesController extends Controller
             'imagen' => 'required|image|max:2048'
         ]);
 
+        $maxId = Juegos::max('id');
+
         $imagen = $request->file('imagen');
-        $carpeta = 'imagenes/' . now()->format('Y-m-d') . '-' . Str::random(8);
+        $carpeta = 'imagenes/' . $maxId;
         $ruta = $imagen->store($carpeta, 'public');
         $url = Storage::url($ruta);
 
