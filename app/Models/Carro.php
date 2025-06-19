@@ -10,6 +10,7 @@ class Carro extends Model
     use HasFactory;
     protected $table = 'carros';
     protected $fillable = ['id_usuario'];
+    public $timestamps = false;
 
     public function items()
     {

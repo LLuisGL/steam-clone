@@ -44,36 +44,38 @@ class compraController extends Controller
         'id_juego' => 'required|exists:juegos,id',
         ]);
 
-        $id_juego= $request->input('id_juego');
+        if (Auth::check()) {
+            $usuario = Auth::user();
+            $id_juego= $request->input('id_juego');
+            
+            if($usuario->carro != null){
+                $carro = $usuario->carro;
+            }else{
+                return redirect()->back()->with('Error', 'No se encontró un carro para este usuario.');
+            }
         
-        $usuario = auth()->user();
+            $existe = carroItem::where('id_carro', $carro->id)
+                        ->where('id_juego', $id_juego)
+                        ->exists();
 
-        $carro = $usuario->carro;
-      
+            if($existe){
+                return redirect()->back()->with('Error', 'El juego ya está en el carrito.');
+            }
 
-        if (!$carro) {
-        return redirect()->back()->with('Error', 'No se encontró un carro para este usuario.');
+            $yaComprado = $usuario->juegos()->where('id_juego', $id_juego)->exists();
+
+            if ($yaComprado) {
+            return redirect()->back()->with('Error', 'Ya tienes este juego en tu biblioteca.');
+            }
+
+            carroItem::create([
+            'id_carro' => $carro->id,
+            'id_juego' => $id_juego,
+            ]);
+            return redirect()->back()->with('Bien', 'Juego agregado al carrito.');
         }
 
-        $existe = carroItem::where('id_carro', $carro->id)
-                       ->where('id_juego', $id_juego)
-                       ->exists();
-
-        if($existe){
-            return redirect()->back()->with('Error', 'El juego ya está en el carrito.');
-        }
-
-        $yaComprado = $usuario->juegos()->where('id_juego', $id_juego)->exists();
-
-        if ($yaComprado) {
-        return redirect()->back()->with('Error', 'Ya tienes este juego en tu biblioteca.');
-        }
-
-        carroItem::create([
-        'id_carro' => $carro->id,
-        'id_juego' => $id_juego,
-        ]);
-        return redirect()->back()->with('Bien', 'Juego agregado al carrito.');
+        return redirect()->back()->with('Error', 'No estas autenticado');
     }
 
     public function destroy($id){

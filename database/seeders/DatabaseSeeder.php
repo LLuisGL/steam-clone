@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ImagenesSeeder::class,
             tagsPorJuegoSeeder::class,
             PlataformasPorJuegoSeeder::class,
+            AdminUsuarioSeeder::class,
         ]);
     }
 }

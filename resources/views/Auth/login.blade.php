@@ -56,13 +56,8 @@
                                     id="password" name='password'
                                 />
                             </div>
-
-                            <div class="flex flex-row  pt-[10px]">
-                                <input type="checkbox" class="form-check-input bg-[#393c44] " id="Remenber">
-                                <label class="form-check-label pl-[5px] text-[#AFAFAF]" for="Remenber">Recordarme</label>
-                            </div>
                             
-                            <div class="bg-[#181A21] flex justify-center items-center h-[50px]" >
+                            <div class="bg-[#181A21] flex justify-center items-center h-[50px] mt-[25px]" >
                                 <button type="submit"  class="bg-gradient-to-r from-[#06BFFF] to-[#2D73FF] text-white font-semibold  w-[270px] h-[40px]">Iniciar sesion</button>
                             </div>
 
@@ -74,7 +69,7 @@
                                 
                             </div>
 
-                            <a href="#" class="bg-[#181A2] text-[#AFAFAF] flex justify-center items-center h-[20px] underline hover:text-white" >Ayuda, no puedo iniciar sesion</a>
+                            <a href="/soporte" class="bg-[#181A2] text-[#AFAFAF] flex justify-center items-center h-[20px] underline hover:text-white" >Ayuda, no puedo iniciar sesion</a>
                         </form>
                     </div>
                 </div>
