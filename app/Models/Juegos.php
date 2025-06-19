@@ -31,4 +31,17 @@ class Juegos extends Model
     {
         return $this->belongsToMany(Plataformas::class, 'plataformas__por__juegos', 'id_juego', 'id_plataforma');
     }
+
+    public function carroItems()
+    {
+    return $this->hasMany(CarroItem::class, 'id_juego');
+    }
+
+    public function getDescuento(){
+        if ($this->precio_normal > 0) {
+            return round((($this->precio_normal - $this->precio_oferta) / $this->precio_normal) * 100);
+        }
+        return 0;
+    }
+
 }
