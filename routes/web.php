@@ -31,3 +31,4 @@ Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-ses
 Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
 Route::get('/cuenta',[cuentaController::class,'show']);
 Route::get('/cart',[compraController::class,'show']);
+Route::delete('/cart/{item}', [compraController::class, 'destroy'])->name('carrito.destroy');

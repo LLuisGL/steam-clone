@@ -31,5 +31,12 @@ class compraController extends Controller
         }
             return back();
     }
+    public function destroy($id){
+        $item = carroItem::findOrFail($id);
+        $item->delete();
+        return redirect()->back()->with('success', 'Juego eliminado del carrito');
+    }
+
+
 
 }

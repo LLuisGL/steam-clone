@@ -21,7 +21,7 @@
         <div class='bg-[#2A475E] w-full h-full flex justify-center'>
             <div class="grid grid-cols-6 mb-4 gap-2">
                 <div class='col-span-4 flex flex-col'>
-                    <div class= 'text-white font-motiva font-bold justify-start'>
+                    <div class= 'text-white font-motiva font-bold justify-start my-[10px]'>
                         Tu carro de la compra   
                     </div>
 
@@ -43,24 +43,41 @@
                                     </div>
 
                                     <div class= 'justify-end flex flex-row'>
-                                        <div class='bg-[#4c6b22] py-[3px] px-[5px] w-[50px] text-[#a4d007] mr-[5px] flex justify-center items-center'>
+                                        <div class='bg-[#4c6b22] py-[3px] px-[5px] w-[70px] h-[40px] text-[#a4d007] mr-[5px] flex justify-center items-center'>
                                             {{$item->juego->getDescuento()}}%
                                         </div>
 
-                                        <div>
-                                            <label class='text-[#626366] '>${{$item->juego->precio_normal}}</label>
-                                        </div>  
+                                        <div class='flex flex-col'>
+                                            <label class='text-[#626366] mx-[2px] line-through'>${{$item->juego->precio_normal}} </label>
+                                            <label class='text-[#c6d4df] mx-[2px]'>${{$item->juego->precio_oferta}}</label>
+                                        </div>
                                     </div>
 
-                                    <div>
-
+                                    <div class='flex flex-row w-[387px] pt-[10px]'>
+                                        <div class='bg-black opacity-25 flex  items-center justify-center text-white text-xs w-[110px] '>
+                                            para mi cuenta
+                                        </div>
+                                        <form action="{{ route('carrito.destroy', $item->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este juego del carrito?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <div class='ml-[200px]'>
+                                                <button type="submit" class='text-white underline hover:text-[#AFAFAF] '>Eliminar</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                             
                     @else
-                        <p>Tu carrito está vacío.</p>
+                        <div class= 'flex flex-col justify-center'>
+
+                            <div class='h-[50px] w-[50px] flex justify-center items-center '>
+                                <img src="/img/carro-de-la-compra.png"class="w-full h-24 object-contain ">
+                            </div>
+
+                            <p class='text-[#c6d4df] font-bold flex justify-center mt-[15px]'>Agrega articulos para comenzar a llenar el carrito...</p>
+                        </div>
                     @endif
 
                     </div>
@@ -73,4 +90,4 @@
         @include('components.footer')
     </main>
 </body>
-</html>{{ $item->juego->nombre_juego }} - ${{ $item->juego->precio_normal }}
+</html>
