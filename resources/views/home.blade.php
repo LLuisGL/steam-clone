@@ -181,7 +181,7 @@
                                 </div>
                                 @if($juego->precio_oferta > 0)
                                     <div class="flex h-full items-center justify-center ">
-                                        <p class="text-[#afdf13] font-bold bg-[#4c6b22] text-center px-2">- {{ceil((1 - ($juego->precio_oferta / $juego->precio_normal)) * 100)}}%</p>
+                                        <p class="text-[#afdf13] font-bold bg-[#4c6b22] text-center px-2">- {{$juego->getDescuento()}}%</p>
                                     </div>
                                 @endif
                                 <div class="text-m flex flex-col justify-evenly pr-2">
@@ -204,6 +204,16 @@
                                     <p class="text-gray-400 text-xs uppercase text-right">{{ \Carbon\Carbon::parse($juego->created_at)->locale('es')->translatedFormat('d M Y') }}</p>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="flex justify-end  mt-[5px]">
+                            <form action="{{ route('carrito.agregar') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id_juego" value="{{ $juego->id }}">
+                                <button type="submit" class="bg-[#59BF40] text-[#d2efa9] text-sm px-4 py-1 hover:bg-[#5ba32b] transition">
+                                    Añadir al carrito
+                                </button>
+                            </form>
                         </div>
                     @endforeach
                 </div>

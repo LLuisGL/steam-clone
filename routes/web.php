@@ -32,3 +32,4 @@ Route::get('/logout',[LogoutController::class,'logout'])->name('logout');
 Route::get('/cuenta',[cuentaController::class,'show']);
 Route::get('/cart',[compraController::class,'show']);
 Route::delete('/cart/{item}', [compraController::class, 'destroy'])->name('carrito.destroy');
+Route::post('/cart/agregar', [compraController::class, 'agregar'])->name('carrito.agregar');

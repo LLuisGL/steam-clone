@@ -31,10 +31,42 @@ class compraController extends Controller
         }
             return back();
     }
+
+    public function agregar(Request $request){
+        $request->validate([
+        'id_juego' => 'required|exists:juegos,id',
+        ]);
+
+        $id_juego= $request->input('id_juego');
+        
+        $usuario = auth()->user();
+
+        $carro = $usuario->carro;
+      
+
+        if (!$carro) {
+        return redirect()->back()->with('Error', 'No se encontró un carro para este usuario.');
+        }
+
+        $existe = carroItem::where('id_carro', $carro->id)
+                       ->where('id_juego', $id_juego)
+                       ->exists();
+
+        if($existe){
+            return redirect()->back()->with('Error', 'El juego ya está en el carrito.');
+        }
+
+        carroItem::create([
+        'id_carro' => $carro->id,
+        'id_juego' => $id_juego,
+        ]);
+        return redirect()->back()->with('Bien', 'Juego agregado al carrito.');
+    }
+
     public function destroy($id){
         $item = carroItem::findOrFail($id);
         $item->delete();
-        return redirect()->back()->with('success', 'Juego eliminado del carrito');
+        return redirect()->back()->with('Bien', 'Juego eliminado del carrito');
     }
 
 

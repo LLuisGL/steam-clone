@@ -9,8 +9,9 @@ class CarroItem extends Model
 {
     use HasFactory;
     protected $table = 'carro_items';
+    public $timestamps = false;
 
-    protected $fillable = ['id_carro', 'id_juego', 'cantidad', 'precio'];
+    protected $fillable = ['id_carro', 'id_juego'];
 
     public function carro()
     {
